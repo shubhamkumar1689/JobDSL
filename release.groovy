@@ -1,9 +1,28 @@
+
+
+
+buildPipelineView {
+	name("build")
+	buildViewTitle("My build")
+	gridBuilder {
+		downstreamProjectGridBuilder {
+			firstJob("mygit")
+		}
+	}
+}
+
+
+
+
 job("mygit"){
   scm{
 	github('shubhamkumar1689/DevOps1','master')
   }
   triggers{
 	scm('* * * * *')
+  }
+  steps{
+	  shell("sudo cp -rvf * /home/")
   }
 
 }
