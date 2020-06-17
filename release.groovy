@@ -1,13 +1,15 @@
 
 
 
-buildPipelineView("My Build") {
-
-	gridBuilder {
-		downstreamProjectGridBuilder {
-			firstJob("mygit")
-		}
-	}
+buildPipelineView('project-A') {
+    filterBuildQueue()
+    filterExecutors()
+    title('Project A CI Pipeline')
+    displayedBuilds(5)
+    selectedJob('mygit')
+    alwaysAllowManualTrigger()
+    showPipelineParameters()
+    refreshFrequency(60)
 }
 
 
