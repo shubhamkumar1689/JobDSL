@@ -35,3 +35,8 @@ job("third3"){
 	upstream("myjob",'SUCCESS')
  }
 }
+job("fourth3"){
+  triggers{
+	upstream("myjob",'FAILURE')
+ }
+}
