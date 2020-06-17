@@ -7,7 +7,7 @@ buildPipelineView('myild') {
     title('Project A CI Pipeline')
     displayedBuilds(5)
     selectedJob('mygit')
-    alwaysAllowManualTrigger(true)
+    alwaysAllowManualTrigger(false)
     showPipelineParameters()
     refreshFrequency(60)
 }
