@@ -8,8 +8,9 @@ buildPipelineView('myBuild') {
     displayedBuilds(5)
     selectedJob('mygit')
     alwaysAllowManualTrigger()
+    showPipelineParameters()
+    refreshFrequency(60)
 }
-
 
 
 
