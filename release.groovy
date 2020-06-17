@@ -11,7 +11,7 @@ job("mygit"){
 
 job("myjob"){
   triggers{
-	upstream(String projects, String threshold = 'SUCCESS')
+	upstream("mygit", 'SUCCESS')
  }
   steps{
     shell('''if sudo kubectl get deploy myweb-deploy
@@ -27,4 +27,11 @@ else
 sudo kubectl expose deploy myweb-deploy --port=80  --type=NodePort
 fi''')
    }
+}
+
+
+job("third3"){
+  triggers{
+	upstream("myjob",'SUCCESS')
+ }
 }
