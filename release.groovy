@@ -2,8 +2,11 @@
 
 
 buildPipelineView('myBuild') {
+    filterBuildQueue()
+    filterExecutors()
     title('Project A CI Pipeline')
     selectedJob('mygit')
+    alwaysAllowManualTrigger()
 }
 
 
