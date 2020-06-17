@@ -5,6 +5,7 @@ buildPipelineView('myBuild') {
     filterBuildQueue()
     filterExecutors()
     title('Project A CI Pipeline')
+    displayedBuilds(5)
     selectedJob('mygit')
     alwaysAllowManualTrigger()
 }
