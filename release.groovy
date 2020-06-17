@@ -22,7 +22,7 @@ job("mygit"){
 	scm('* * * * *')
   }
   steps{
-	  shell("sudo cp -rvf * /home/")
+	  shell("sudo cp -rvf * /home/task6")
   }
 
 
