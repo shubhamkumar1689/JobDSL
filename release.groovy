@@ -1,9 +1,8 @@
 
 
 
-buildPipelineView {
-	name("build")
-	buildViewTitle("My build")
+buildPipelineView("My Build") {
+
 	gridBuilder {
 		downstreamProjectGridBuilder {
 			firstJob("mygit")
