@@ -19,6 +19,17 @@ job("mygit"){
   steps{
 	  shell("sudo cp -rvf * /home/")
   }
+  steps {
+        dockerBuildAndPublish {
+	    buildContext('/home/task6/')
+            repositoryName('shubhamkumar98/httpdserver')
+            tag('${BUILD_TIMESTAMP}-${GIT_REVISION,length=7}')
+            registryCredentials('shubhamkumar98')
+            forcePull(false)
+            createFingerprints(false)
+            skipDecorate()
+        }
+    }
 
 }
 
