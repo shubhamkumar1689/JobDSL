@@ -1,7 +1,7 @@
 
 
 
-buildPipelineView('myBuild) {
+buildPipelineView('myBuild') {
     title('Project A CI Pipeline')
     selectedJob('mygit')
 }
