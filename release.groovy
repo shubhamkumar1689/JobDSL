@@ -63,7 +63,7 @@ job("third3"){
 		upstream("myjob",'SUCCESS')
  	}
 	steps{
-		shell('''status = $(curl -o /dev/null -s -w "%{http_code}" http://192.168.99.101:30036/web.html
+		shell('''status=$(curl -o /dev/null -s -w "%{http_code}" http://192.168.99.101:30036/web.html)
 		if [[ $status ==200 ]]
 		then
 		exit 0
