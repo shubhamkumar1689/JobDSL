@@ -13,13 +13,6 @@ buildPipelineView('myild') {
 }
 
 
-job('example') {
-    steps {
-        dockerBuildAndPublish {
-            repositoryName('example/project-a')
-        }
-    }
-}
 
 job("mygit"){
   scm{
@@ -31,6 +24,16 @@ job("mygit"){
   steps{
 	  shell("sudo cp -rvf * /home/task6")
   }
+  steps {
+        dockerBuildAndPublish {
+            repositoryName('shubhamkumar98/httpdserver')
+            tag('latest')
+            registryCredentials('shubhamkumar98')
+            forcePull(false)
+            createFingerprints(false)
+            skipDecorate()
+        }
+    }
 
 }
 
