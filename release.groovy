@@ -25,7 +25,7 @@ job("mygit"){
         	dockerBuildAndPublish {
             	repositoryName('shubhamkumar98/httpdserver')
             	tag('latest')
-            	registryCredentials('05032f47-db09-4387-b10c-41d6ae1a1ad6')
+            	registryCredentials('mydocker')
 		forcePull(false)
             	createFingerprints(false)
             	skipDecorate()
