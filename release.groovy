@@ -21,9 +21,6 @@ job("mygit"){
   triggers{
 	scm('* * * * *')
   }
-  steps{
-	  shell("sudo cp -rvf * /home/task6/")
-  }
   steps {
         dockerBuildAndPublish {
             repositoryName('shubhamkumar98/httpdserver')
@@ -61,9 +58,24 @@ job("third3"){
   triggers{
 	upstream("myjob",'SUCCESS')
  }
+	steps{
+		shell('''status = $(curl -o /dev/null -s -w "%{http_code}" http://192.168.99.101:32/web.html
+		if [[ $status ==200 ]]
+		then
+		exit 0
+		else
+		exit 1
+		fi
+		''')
+	}
 }
 job("fourth4"){
   triggers{
 	upstream("third3",'FAILURE')
  }
+	post{
+		failure {  
+             		mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "foo@foomail.com";  
+         	} 
+	}
 }
