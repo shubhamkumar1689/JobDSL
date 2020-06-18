@@ -1,7 +1,7 @@
 
 
 
-buildPipelineView('BuildPipeline') {
+buildPipelineView('BuildPipelineView') {
     filterBuildQueue()
     filterExecutors()
     title('Project A CI Pipeline')
