@@ -26,6 +26,9 @@ job("mygit"){
             	repositoryName('shubhamkumar98/httpdserver')
             	tag('latest')
             	registryCredentials('05032f47-db09-4387-b10c-41d6ae1a1ad6')
+		forcePull(false)
+            	createFingerprints(false)
+            	skipDecorate()
         	}
     	}
 
