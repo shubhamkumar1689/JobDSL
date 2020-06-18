@@ -43,7 +43,7 @@ job("myjob"){
   	steps{
     		shell('''if sudo kubectl get deploy myweb-deploy
 		then
-		sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/myhttpserver:$BUILD_NUMBER
+		sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/httpdserver:$BUILD_NUMBER
 		else
 		sudo kubectl create -f /home/jenkins/web-pvc.yml
 		sudo kubectl create -f /home/jenkins/deploy.yml
