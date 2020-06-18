@@ -24,7 +24,7 @@ job("mygit"){
   	steps {
         	dockerBuildAndPublish {
             	repositoryName('shubhamkumar98/httpdserver')
-            	tag('latest')
+            	tag('$BUILD_NUMBER')
             	registryCredentials('mydocker')
 		forceTag(false)
 		forcePull(false)
@@ -43,7 +43,7 @@ job("myjob"){
   	steps{
     		shell('''if sudo kubectl get deploy myweb-deploy
 		then
-		sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/myhttpserver:latest
+		sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/myhttpserver:$BUILD_NUMBER
 		else
 		sudo kubectl create -f /home/jenkins/web-pvc.yml
 		sudo kubectl create -f /home/jenkins/deploy.yml
