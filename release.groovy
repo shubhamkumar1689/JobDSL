@@ -52,7 +52,7 @@ job("myjob"){
 		then
 		echo "already "
 		else
-		sudo kubectl expose deploy myweb-deploy --port=80  --type=NodePort
+		sudo kubectl create -f /home/jenkins/service.yml
 		fi''')
    	}
 }
@@ -63,7 +63,7 @@ job("third3"){
 		upstream("myjob",'SUCCESS')
  	}
 	steps{
-		shell('''status = $(curl -o /dev/null -s -w "%{http_code}" http://192.168.99.101:32/web.html
+		shell('''status = $(curl -o /dev/null -s -w "%{http_code}" http://192.168.99.101:30036/web.html
 		if [[ $status ==200 ]]
 		then
 		exit 0
