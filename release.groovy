@@ -17,8 +17,6 @@ job('example') {
     steps {
         dockerBuildAndPublish {
             repositoryName('example/project-a')
-            registryCredentials('docker-hub')
-
         }
     }
 }
