@@ -29,9 +29,6 @@ job("mygit"){
             repositoryName('shubhamkumar98/httpdserver')
             tag('latest')
             registryCredentials('shubhamkumar98')
-            forcePull(false)
-            createFingerprints(false)
-            skipDecorate()
         }
     }
 
@@ -47,6 +44,7 @@ job("myjob"){
 then
 sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/myhttpserver:latest
 else
+sudo kubectl create -f /home/jenkins/web-pvc1.yml
 sudo kubectl create -f /home/jenkins/deploy.yml
 fi
 if sudo kubectl get service myweb-deploy
