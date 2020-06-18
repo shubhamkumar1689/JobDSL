@@ -26,6 +26,7 @@ job("mygit"){
             	repositoryName('shubhamkumar98/httpdserver')
             	tag('latest')
             	registryCredentials('mydocker')
+		forceTag(false)
 		forcePull(false)
             	createFingerprints(false)
             	skipDecorate()
