@@ -24,6 +24,16 @@ job("mygit"){
   steps{
 	  shell("sudo cp -rvf * /home/task6")
   }
+      steps {
+        dockerBuildAndPublish {
+            repositoryName('shubhamkumar/httpdserver')
+            tag('latest')
+            registryCredentials('shubhamkumar98')
+            forcePull(false)
+            createFingerprints(false)
+            skipDecorate()
+        }
+    }
 
 
 }
