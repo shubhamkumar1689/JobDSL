@@ -15,49 +15,49 @@ buildPipelineView('myild') {
 
 
 job("mygit"){
-  scm{
-	github('shubhamkumar1689/DevOps1','master')
-  }
-  triggers{
-	scm('* * * * *')
-  }
-  steps {
-        dockerBuildAndPublish {
-            repositoryName('shubhamkumar98/httpdserver')
-            tag('latest')
-            registryCredentials('shubhamkumar98')
-        }
-    }
+ 	 scm{
+		github('shubhamkumar1689/DevOps1','master')
+  	}
+  	triggers{
+		scm('* * * * *')
+  	}
+  	steps {
+        	dockerBuildAndPublish {
+            	repositoryName('shubhamkumar98/httpdserver')
+            	tag('latest')
+            	registryCredentials('shubhamkumar98')
+        	}
+    	}
 
 }
 
 
 job("myjob"){
-  triggers{
-	upstream("mygit", 'SUCCESS')
- }
-  steps{
-    shell('''if sudo kubectl get deploy myweb-deploy
-then
-sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/myhttpserver:latest
-else
-sudo kubectl create -f /home/jenkins/web-pvc1.yml
-sudo kubectl create -f /home/jenkins/deploy.yml
-fi
-if sudo kubectl get service myweb-deploy
-then
-echo "already "
-else
-sudo kubectl expose deploy myweb-deploy --port=80  --type=NodePort
-fi''')
-   }
+  	triggers{
+		upstream("mygit", 'SUCCESS')
+ 	}
+  	steps{
+    		shell('''if sudo kubectl get deploy myweb-deploy
+		then
+		sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/myhttpserver:latest
+		else
+		sudo kubectl create -f /home/jenkins/web-pvc1.yml
+		sudo kubectl create -f /home/jenkins/deploy.yml
+		fi
+		if sudo kubectl get service myweb-deploy
+		then
+		echo "already "
+		else
+		sudo kubectl expose deploy myweb-deploy --port=80  --type=NodePort
+		fi''')
+   	}
 }
 
 
 job("third3"){
-  triggers{
-	upstream("myjob",'SUCCESS')
- }
+  	triggers{
+		upstream("myjob",'SUCCESS')
+ 	}
 	steps{
 		shell('''status = $(curl -o /dev/null -s -w "%{http_code}" http://192.168.99.101:32/web.html
 		if [[ $status ==200 ]]
@@ -70,10 +70,10 @@ job("third3"){
 	}
 }
 job("fourth4"){
-  triggers{
-	upstream("third3",'FAILURE')
- }
-    publishers {
-        mailer('shubhaminbox061@gmail.com', true, true)
-    }
+  	triggers{
+		upstream("third3",'FAILURE')
+ 	}
+    	publishers {
+        	mailer('shubhaminbox061@gmail.com', true, true)
+    	}
 }
