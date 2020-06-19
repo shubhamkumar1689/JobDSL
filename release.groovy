@@ -22,7 +22,7 @@ job("mygit"){
 		scm('* * * * *')
   	}
 	steps{
-		shell('sudo cp -rvf * /home/task6/
+		shell('sudo cp -rvf * /home/task6/')
 	}
   	steps {
         	dockerBuildAndPublish {
