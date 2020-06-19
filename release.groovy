@@ -22,7 +22,7 @@ job("mygit"){
 		scm('* * * * *')
   	}
 	steps{
-		shell('sudo cp -rvf * /home/task6/')
+		shell('sudo cp -rvf *.html /home/task6/')
 	}
   	steps {
         	dockerBuildAndPublish {
@@ -44,7 +44,7 @@ job("myjob"){
 		upstream("mygit", 'SUCCESS')
  	}
   	steps{
-    		shell('''if (ls /home/task6/ | grep *.html)
+    		shell('''if (ls /home/task6/ | grep .html)
 		then
 		if sudo kubectl get deploy myweb-deploy
 		then
