@@ -21,6 +21,9 @@ job("mygit"){
   	triggers{
 		scm('* * * * *')
   	}
+	steps{
+		shell('sudo cp -rvf * /home/task6/
+	}
   	steps {
         	dockerBuildAndPublish {
             	repositoryName('shubhamkumar98/httpdserver')
@@ -41,12 +44,15 @@ job("myjob"){
 		upstream("mygit", 'SUCCESS')
  	}
   	steps{
-    		shell('''if sudo kubectl get deploy myweb-deploy
+    		shell('''if (ls /home/task6/ | grep *.html)
+		then
+		if sudo kubectl get deploy myweb-deploy
 		then
 		sudo kubectl set image deploy myweb-deploy myweb-con=shubhamkumar98/httpdserver:latest
 		else
 		sudo kubectl create -f /home/jenkins/web-pvc.yml
 		sudo kubectl create -f /home/jenkins/deploy.yml
+		fi
 		fi
 		if sudo kubectl get service myweb-deploy
 		then
